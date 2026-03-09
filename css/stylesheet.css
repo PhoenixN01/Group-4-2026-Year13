@@ -1,3 +1,7 @@
 .bg-body-tertiary{
     background-color: blue !important;
 }
+
+.vertical_line {
+    border-left: 0.1em rgba(var(--bs-secondary-color), 0.8);
+}
