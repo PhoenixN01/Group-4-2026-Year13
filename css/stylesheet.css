@@ -1,7 +1,23 @@
+:root{
+    --nav-color: rgb(5, 42, 118);
+    --nav-text-color: rgb(238, 238, 238);
+}
+
+
+.bg-navbar{
+    background-color: var(--nav-color) !important;
+    color: var(--nav-text-color) !important;
+}
+
+.nav-item{
+    color: var(--nav-text-color);
+}
+
 .bg-body-tertiary{
     background-color: blue !important;
 }
 
 .vertical_line {
-    border-left: 0.1em rgba(var(--bs-secondary-color), 0.8);
+    border-left: 0.1em solid var(--bs-secondary-color);
+    height: 2em;
 }
