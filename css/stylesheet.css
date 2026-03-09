@@ -1,7 +1,12 @@
+:root {
+    --bs-secondary-rgb: rgb(5, 43, 117);
+}
+
 .bg-body-tertiary{
     background-color: blue !important;
 }
 
 .vertical_line {
-    border-left: 0.1em rgba(var(--bs-secondary-color), 0.8);
+    border-left: 0.1em solid var(--bs-secondary-color);
+    height: 2em;
 }
