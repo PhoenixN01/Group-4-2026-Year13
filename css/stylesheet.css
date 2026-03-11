@@ -1,3 +1,65 @@
+/* Tony's Trial Styling */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Phoenix's Trial Styling */
 :root {
     --bs-secondary-rgb: rgb(5, 43, 117);
 }
@@ -6,7 +68,11 @@
     background-color: blue !important;
 }
 
-.vertical_line {
+.v_footer_divider {
     border-left: 0.1em solid var(--bs-secondary-color);
     height: 2em;
+}
+
+.h_footer_divider {
+    border-bottom: 0.1em solid var(--bs-secondary-color);
 }
