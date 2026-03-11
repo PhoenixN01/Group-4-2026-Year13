@@ -1,23 +1,16 @@
-:root{
-    --nav-color: rgb(5, 42, 118);
-    --nav-text-color: rgb(238, 238, 238);
-}
-
-
-.bg-navbar{
-    background-color: var(--nav-color) !important;
-    color: var(--nav-text-color) !important;
-}
-
-.nav-item{
-    color: var(--nav-text-color);
+:root {
+    --bs-secondary-rgb: rgb(5, 43, 117);
 }
 
 .bg-body-tertiary{
     background-color: blue !important;
 }
 
-.vertical_line {
+.v_footer_divider {
     border-left: 0.1em solid var(--bs-secondary-color);
     height: 2em;
+}
+
+.h_footer_divider {
+    border-bottom: 0.1em solid var(--bs-secondary-color);
 }
