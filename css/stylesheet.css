@@ -1,29 +1,29 @@
 /* Tony's Trial Styling */
 :root{
-    --nav-background
+    --nav-background: #052B75;
+    --nav-text: #dadada;
 }
 
+.bg-navbar{
+    background-color: var(--nav-background) !important;
+}
 
+.navbar{
+    padding-top: 0.5em;
+    padding-bottom: 0.8em;
+}
 
+.navbar-nav .nav-link{
+    color: var(--nav-text) !important;
+}
 
+.navbar-nav .nav-link:hover{
+    color: #ffffff !important;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.navbar-toggler{
+    border: none;
+}
 
 
 
