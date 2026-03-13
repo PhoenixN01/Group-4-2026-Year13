@@ -25,11 +25,11 @@
     border: none;
 }
 
-
-
-
-
-
+@media (min-width: 992px) {
+    .navbar-nav .nav-item {
+        border: none !important;
+    }
+}
 
 
 
