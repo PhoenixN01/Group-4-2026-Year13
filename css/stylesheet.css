@@ -31,15 +31,15 @@
     }
 }
 
-
-
-
-
-
-
-
-
-
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
+    display: none;
+}
+    
+.navbar-toggler[aria-expanded="true"]::after{
+    content: "✕";
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.5em;
+}    
 
 
 
