@@ -61,18 +61,6 @@
 
 /* Phoenix's Trial Styling */
 :root {
-    --bs-secondary-rgb: rgb(5, 43, 117);
-}
-
-.bg-body-tertiary{
-    background-color: blue !important;
-}
-
-.v_footer_divider {
-    border-left: 0.1em solid var(--bs-secondary-color);
-    height: 2em;
-}
-
-.h_footer_divider {
-    border-bottom: 0.1em solid var(--bs-secondary-color);
+    --bs-secondary-color: #EEEEEE !important;
+    --bs-secondary-rgb: 5, 43, 117 !important;
 }
