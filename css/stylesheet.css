@@ -1,45 +1,45 @@
 /* Tony's Trial Styling */
+:root{
+    --nav-background: #052B75;
+    --nav-text: #dadada;
+}
 
+.bg-navbar{
+    background-color: var(--nav-background) !important;
+}
 
+.navbar{
+    padding-top: 0.5em;
+    padding-bottom: 0.8em;
+}
 
+.navbar-nav .nav-link{
+    color: var(--nav-text) !important;
+}
 
+.navbar-nav .nav-link:hover{
+    color: #ffffff !important;
+}
 
+.navbar-toggler{
+    border: none;
+}
 
+@media (min-width: 992px) {
+    .navbar-nav .nav-item {
+        border: none !important;
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
+    display: none;
+}
+    
+.navbar-toggler[aria-expanded="true"]::after{
+    content: "✕";
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.5em;
+}    
 
 
 
