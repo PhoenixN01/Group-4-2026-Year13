@@ -53,3 +53,8 @@ html {
 
 
 /* End of Template styling */
+
+.lead{
+    max-width: 80%;
+    margin: auto;
+}
