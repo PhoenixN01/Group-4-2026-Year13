@@ -1,7 +1,13 @@
-/* Tony's Trial Styling */
+/* Template Styling */
 :root{
     --nav-background: #052B75;
     --nav-text: #dadada;
+    --bs-secondary-color: #EEEEEE !important;
+    --bs-secondary-rgb: 5, 43, 117 !important;
+}
+
+html {
+    height: 100%;
 }
 
 .bg-navbar{
@@ -39,28 +45,11 @@
     content: "✕";
     color: rgba(255, 255, 255, 0.5);
     font-size: 1.5em;
-}    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Phoenix's Trial Styling */
-:root {
-    --bs-secondary-color: #EEEEEE !important;
-    --bs-secondary-rgb: 5, 43, 117 !important;
 }
+
+.img-fluid {
+    max-height: 800px;
+}
+
+
+/* End of Template styling */
