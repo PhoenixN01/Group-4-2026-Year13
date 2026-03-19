@@ -35,6 +35,9 @@ html {
     .navbar-nav .nav-item {
         border: none !important;
     }
+    .lead{
+        font-size: 2em;
+    }
 }
 
 .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
@@ -57,4 +60,8 @@ html {
 .lead{
     max-width: 80%;
     margin: auto;
+}
+
+.card{
+    width: 18rem;
 }
