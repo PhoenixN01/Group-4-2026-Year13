@@ -4,6 +4,7 @@
     --nav-text: #dadada;
     --bs-secondary-color: #EEEEEE !important;
     --bs-secondary-rgb: 5, 43, 117 !important;
+    --jumbotron-background: #C8D9DC;
 }
 
 html {
@@ -38,6 +39,9 @@ html {
     .lead{
         font-size: 2em;
     }
+    .jumbotron p{
+        font-size: 1.2em;
+    }
 }
 
 .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
@@ -64,4 +68,12 @@ html {
 
 .card{
     width: 18rem;
+}
+
+.jumbotron{
+    background-color: var(--jumbotron-background) !important;
+}
+
+.user-button button{
+    background-color: var(--nav-background) !important;
 }
