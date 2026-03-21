@@ -4,7 +4,6 @@
     --nav-text: #dadada;
     --bs-secondary-color: #EEEEEE !important;
     --bs-secondary-rgb: 5, 43, 117 !important;
-    --jumbotron-background: #C8D9DC;
 }
 
 html {
@@ -67,13 +66,15 @@ html {
 }
 
 .card{
-    width: 18rem;
+    background-color: #E8EFEF !important;
 }
 
-.jumbotron{
-    background-color: var(--jumbotron-background) !important;
-}
-
-.user-button button{
+.btn-primary{
     background-color: var(--nav-background) !important;
+    border-color: var(--nav-background) !important;
+    width: 200px;
+}
+
+.btn-primary:hover{
+    background-color: #052a75ce !important;
 }
