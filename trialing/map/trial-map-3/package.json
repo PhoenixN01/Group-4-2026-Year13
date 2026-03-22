@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@maplibre/maplibre-gl-directions": "^0.9.1",
     "maplibre-gl": "^5.20.2"
   },
   "name": "trial-map-3",
