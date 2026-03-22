@@ -35,8 +35,12 @@
             </div>
         </div>
     </nav>
-    <img src="../static/template/hero image dtp.jpg" class="img-fluid mx-auto d-block px-xl-5" alt="Flower field in front of mountains">
-    <div class="bg-secondary">
+    <picture>
+        <source srcset="../static/template/hero_image.png" media="(max-width: 767px)">
+        <source srcset="../static/template/hero_image_wide.png" media="(min-width: 768px)">
+        <img src="../static/template/hero_image_wide.png" class="img-fluid mx-auto d-block" alt="Lake in front of Mountain Range">
+    </picture>
+        <div class="bg-secondary">
         <div class="container">
             <footer class="py-3 my-4"> 
                 <h5 class="text-center text-body-secondary py-3">Māori Tourism</h5> 
