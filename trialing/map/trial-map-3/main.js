@@ -36,7 +36,7 @@ map.on('load', async () => {
     const coordString = routeCoords.map(c => `${c[0]},${c[1]}`).join(';');
     const url = `https://router.project-osrm.org/route/v1/driving/${coordString}?overview=full&geometries=geojson`;
 
-    const res = await fetch(url);
+    const res = await fetch(url);   
     const data = await res.json();
     const geometry = data.routes[0].geometry;
 
@@ -56,7 +56,12 @@ map.on('load', async () => {
     });
 
     routeCoords.forEach((coord, i) => {
-        const color = i === 0 ? 'green' : 'red';
+        let color;
+        if (i === 0) {
+            color = 'green';
+        } else {
+            color = 'red';
+        }
         new maplibregl.Marker({ color }).setLngLat(coord).addTo(map);
     });
 });
