@@ -35,6 +35,12 @@ html {
     .navbar-nav .nav-item {
         border: none !important;
     }
+    .lead{
+        font-size: 2em;
+    }
+    .jumbotron p{
+        font-size: 1.2em;
+    }
 }
 
 .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
@@ -49,3 +55,22 @@ html {
 
 
 /* End of Template styling */
+
+.lead{
+    max-width: 80%;
+    margin: auto;
+}
+
+.card{
+    background-color: #E8EFEF !important;
+}
+
+.btn-primary{
+    background-color: var(--nav-background) !important;
+    border-color: var(--nav-background) !important;
+    width: 200px;
+}
+
+.btn-primary:hover{
+    background-color: #052a75ce !important;
+}
