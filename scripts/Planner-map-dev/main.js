@@ -108,7 +108,7 @@ map.on('load', async () => {
 
         tripStops.push({ coords });
         exportToGoogleMaps();
-        new maplibregl.Marker().setLngLat(coords).addTo(map);
+        new maplibregl.Marker({ color: '#FF0000' }).setLngLat(coords).addTo(map);
         console.log(`Added marker at: ${e.lngLat}`)
         await updateTrip();
     });
