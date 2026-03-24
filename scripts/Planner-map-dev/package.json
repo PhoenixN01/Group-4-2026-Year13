@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "@maplibre/maplibre-gl-directions": "^0.9.1",
+    "maplibre-gl": "^5.20.2"
+  },
+  "name": "trial-map-3",
+  "version": "1.0.0",
+  "main": "main.js",
+  "devDependencies": {
+    "vite": "^8.0.1"
+  },
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
