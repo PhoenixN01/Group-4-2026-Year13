@@ -5,7 +5,7 @@ const map = new maplibregl.Map({
   container: 'map',
   style: 'https://api.maptiler.com/maps/streets/style.json?key=Nh1VoYoYkD3jnoS91PIq',
   center: [175.7167, -38.4000], // North Island
-  zoom: 12,
+  zoom: 5,
   pitch: 0,
   bearing: 0
 });
@@ -66,5 +66,5 @@ map.on('load', async () => {
     });
 });
 
-map.setPitch(45);
-map.setBearing(20);
+map.setPitch(30);
+map.setBearing(0);
