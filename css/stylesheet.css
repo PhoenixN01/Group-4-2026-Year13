@@ -74,3 +74,22 @@ html {
 .btn-primary:hover{
     background-color: #052a75ce !important;
 }
+
+/* Resources.html Styling */
+.btn-resources {
+    background-color: #ffffff !important;
+    border-color: var(--nav-background) !important;
+    border-width: 2px;
+    color: #000000;
+    width: 200px;
+}
+
+.hero-content {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bg-body-tertiary {
+    --bs-bg-opacity: 0.6 !important;
+}
