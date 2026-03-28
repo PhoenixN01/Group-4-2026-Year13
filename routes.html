@@ -46,29 +46,30 @@
             </div> 
         </div>
 
-                <div class="container-fluid px-3 px-md-5 mt-5">
+        <div class="container-fluid px-3 px-md-5 mt-5">
             <div class="row g-4">
         
                 <div class="col-12 col-md-6 col-lg-6 d-flex justify-content-md-center">
                     <div class="card w-100 h-100">
-                        <div id="map" class="card-img-top"></div>
+                        <img src="image/landmarch.jpg" class="card-img-top img-fluid" alt="Engraved Māori artwork on a rock surrounded by water">
                         <div class="card-body">
-                            <h5 class="card-title"><b>Find pre-existing routes</b></h5>
-                            <p class="card-text">Explore pre-determined routes with key landmarks and directions already put in place.</p>
+                            <h5 class="card-title"><b>1975 Māori Land March</b></h5>
+                            <p class="card-text">Discover the very route that Dame Whina Cooper and her group Te Rōpū Matakite o Aotearoa had travelled from 14th September to 13 October 1975.</p>
+                            <button 
+                                class="btn btn-primary d-block mx-auto"
+                                data-bs-toggle="modal"
+                                data-bs-target="#exampleModal"
+                                data-route="landMarch">
+                                Learn about the route
+                            </button>
+                            <div class="modal fade" id="modal1">
+                                <div class="modal-body">
+                                    <div id="map1"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-        
-                <div class="col-12 col-md-6 col-lg-6 d-flex justify-content-md-center">
-                    <div class="card w-100 h-100">
-                        <img src="image/resources.jpg" class="card-img-top img-fluid" alt="Engraved Māori artwork on a rock surrounded by water">
-                        <div class="card-body">
-                            <h5 class="card-title"><b>Find additional resources</b></h5>
-                            <p class="card-text">Learn more about the Māori history, culture and language through external sources.</p>
-                        </div>
-                    </div>
-                </div>
-        
             </div>
         </div>
     </main>
