@@ -75,7 +75,7 @@ html {
     background-color: #052a75ce !important;
 }
 
-#map{
+.modal-map{
     width: 100%;
     height: 400px;
 }
