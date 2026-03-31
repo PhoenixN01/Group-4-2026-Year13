@@ -32,11 +32,19 @@
             </div>
         </div>
     </nav>
-     <picture>
-        <source srcset="../static/template/hero_image.png" media="(max-width: 767px)">
-        <source srcset="../static/template/hero_image_wide.png" media="(min-width: 768px)">
-        <img src="../static/template/hero_image_wide.png" class="img-fluid mx-auto d-block" alt="Lake in front of Mountain Range">
-    </picture>
+    <div class="position-relative d-inline-block">
+        <picture>
+            <source srcset="../static/template/hero_image.png" media="(max-width: 767px)">
+            <source srcset="../static/template/hero_image_wide.png" media="(min-width: 768px)">
+            <img src="../static/template/hero_image_wide.png" class="img-fluid position-relative mx-auto d-block" alt="Lake in front of Mountain Range">
+        </picture>
+        <div class="container position-absolute hero-content z-1">
+            <div class="jumbotron p-4 mx-auto my-5 text-center bg-body-tertiary rounded-3">
+                <h1 class="text-body-emphasis mt-4">Māori Tourism</h1>
+                <p class="col-lg-8 mx-auto mt-4">Explore Māori culture, history, and journeys across Aotearoa New Zealand.</p>
+            </div>
+        </div>
+    </div>
     <main>
         <div class="container my-5"> 
             <div class="jumbotron p-4 text-center bg-body-tertiary rounded-3">  
