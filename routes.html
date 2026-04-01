@@ -33,18 +33,20 @@
             </div>
         </div>
     </nav>
-    <picture>
-        <source srcset="../static/template/hero_image.png" media="(max-width: 767px)">
-        <source srcset="../static/template/hero_image_wide.png" media="(min-width: 768px)">
-        <img src="../static/template/hero_image_wide.png" class="img-fluid mx-auto d-block" alt="Lake in front of Mountain Range">
-    </picture>
-    <main>
-        <div class="container my-5"> 
-            <div class="jumbotron p-4 text-center bg-body-tertiary rounded-3">  
-                <h1 class="text-body-emphasis mt-4">Featured Routes</h1> 
-                <p class="col-lg-8 mx-auto mt-4">Discover pre-established routes if planning one yourself is not for you.</p> 
-            </div> 
+    <div class="position-relative">
+        <picture>
+            <source srcset="../static/template/hero_image.png" media="(max-width: 767px)">
+            <source srcset="../static/template/hero_image_wide.png" media="(min-width: 768px)">
+            <img src="../static/template/hero_image_wide.png" class="img-fluid position-relative mx-auto d-block" alt="Lake in front of Mountain Range">
+        </picture>
+        <div class="container position-absolute hero-content z-1">
+            <div class="jumbotron p-4 mx-auto my-5 text-center bg-body-tertiary rounded-3">
+                <h1 class="text-body-emphasis mt-4">Featured Routes</h1>
+                <p class="col-lg-8 mx-auto mt-4">Discover pre-established routes if planning one yourself is not for you.</p>
+            </div>
         </div>
+    </div>
+    <main>
 
         <div class="container-fluid px-3 px-md-5 mt-5">
             <div class="row g-4">
