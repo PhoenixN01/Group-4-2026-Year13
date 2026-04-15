@@ -56,11 +56,6 @@ html {
 
 /* End of Template styling */
 
-.lead{
-    max-width: 80%;
-    margin: auto;
-}
-
 .card{
     background-color: #E8EFEF !important;
 }
@@ -104,4 +99,9 @@ html {
 .modal-map{
     width: 100%;
     height: 400px;
+}
+
+button a{
+    text-decoration: none;
+    color: white;
 }
