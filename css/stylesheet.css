@@ -96,6 +96,10 @@ html {
     --bs-bg-opacity: 0.6 !important;
 }
 
+.bg-info{
+    background-color: #C8D9DC !important;
+}
+
 .modal-map{
     width: 100%;
     height: 400px;
