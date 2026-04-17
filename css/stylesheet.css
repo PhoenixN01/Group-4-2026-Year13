@@ -100,6 +100,13 @@ html {
     background-color: #C8D9DC !important;
 }
 
+/* Planner Styling */
+
+#map{
+    width: 100%;
+    height: 400px;
+}
+
 /* Routes Styling */
 
 .modal-map{
