@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Metadata for the page -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Māori Tourism | Homepage</title>
+    
+    <!-- Linking Bootstrap CSS for styling -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Custom stylesheet for additional styling -->
     <link rel="stylesheet" href="../css/stylesheet.css">
+
+    <!-- Icon for the website in tab -->
     <link rel="icon" type="image/png" href="../static/template/page-icon.png">
 </head>
 <body>
+    <!-- Header section with navigation bar -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-navbar py-lg-3">
             <div class="container-fluid">
+                <!-- Logo and home link -->
                 <a class="navbar-brand ms-lg-4" href="index.html"><img src="../static/template/logo.png" alt="Māori Tourism logo - Home"></a>
 
+                <!-- Navbar toggler for mobile view -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <!-- Navbar links -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 px-lg-5 align-self-lg-center text-white">
                         <li class="nav-item mt-3 mt-lg-1 px-lg-2">
+                            <!-- Page they are on is in bold -->
                             <a class="nav-link active" aria-current="page" href="index.html"><strong>Home</strong></a>
                         </li>
                         <li class="nav-item py-1 px-lg-2">
@@ -38,13 +50,17 @@
         </nav>
     </header>
 
+    <!-- Hero section with text and image -->
     <section class="position-relative" aria-label="Hero">
         <picture>
+            <!-- Different images for different screen sizes -->
             <source srcset="../static/template/hero_image.png" media="(max-width: 767px)">
             <source srcset="../static/template/hero_image_wide.png" media="(min-width: 768px)">
+            <!-- Default image -->
             <img src="../static/template/hero_image_wide.png" class="img-fluid position-relative mx-auto d-block" alt="Lake in front of Mountain Range">
         </picture>
 
+        <!-- Hero text for title -->
         <div class="container position-absolute hero-content z-1">
             <div class="jumbotron p-4 mx-auto my-5 text-center bg-body-tertiary rounded-3">
                 <h1 class="text-body-emphasis mt-4">Māori Tourism</h1>
@@ -53,16 +69,20 @@
         </div>
     </section>
 
+    <!-- Main content section -->
     <main>
+        <!-- Introduction section -->
         <section class="container my-5" aria-label="Introduction"> 
             <div class="jumbotron bg-info p-4 text-center rounded-3">  
                 <h1 class="text-body-emphasis mt-2">Discover Aotearoa New Zealand's deep and enriching Māori culture.</h1>
                 <p class="col-lg-8 mx-auto mt-5">At Māori Tourism, we help guide you to creating the perfect itinerary in learning about the rich and enticing Māori history by detailing landmarks across Aotearoa New Zealand.</p>
+                <!-- Button to go to trip planner -->
                 <p><b> Click the button below to begin customising your own personalised route.</b></p>
                 <a href="planner.html" class="btn btn-primary mt-3">Plan Your Route</a>
             </div> 
         </section>
 
+        <!-- Brief outlook section about Māori culture and history -->
         <section class="container my-5" aria-label="Brief Outlook">
             <div class="text-center mb-5">
                 <h2><b>Brief Outlook</b></h2>
@@ -71,59 +91,77 @@
                 </p>
             </div>
             <div class="row g-4">
+                <!-- History section -->
                 <div class="col-md-4 gx-5">
                     <div class="icon-circle mx-auto mb-3" aria-hidden="true">
+                        <!-- History icon -->
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
                             <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
                         </svg>
                     </div>
+                    <!-- History content -->
                     <h3 class="h5 text-center mb-4"><b>History</b></h3>
                     <p>The ancestors of Māori first arrived on canoes from Pacific islands before 1300 CE. They lived in small tribal groups that were affected by the arrival of Europeans from the early 1800s.</p>
                     <p>The Treaty of Waitangi signed in 1840 established British law and government. However, conflict continued in the 1840s and 1860s as Māori defended their lands and local authority. After the wars, Māori lost land through confiscation and sale.</p>
                 </div>
 
+                <!-- Impact on present day section -->
                 <div class="col-md-4 gx-5">
                     <div class="icon-circle mx-auto mb-3" aria-hidden="true">
+                        <!-- Impact on present day icon -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill " viewBox="0 0 16 16">
                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
                         </svg>
                     </div> 
+                    <!-- Impact on present day content -->
                     <h3 class="h5 text-center mb-4"><b>Impact on Present day</b></h3>
                     <p>In the 1970s and 1980s, groups protested about their rights to land, and helped promote the Māori language and culture. It featured famous and impactful events such as the creation of the Waitangi Tribunal in 1975 to look at claimed breaches of the Treaty, The Māori land march of 1975, and the occupation of Bastion Point in Auckland by protesters in 1977-78.</p>
                     <p>Disputes and protests are still prominent today as the New Zealand government are looking at reducing and reframing Treaty rights.</p>
                 </div>
 
+                <!-- Significance section -->
                 <div class="col-md-4 gx-5">
                     <div class="icon-circle mx-auto mb-3" aria-hidden="true">
+                        <!-- Significance icon -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe2" viewBox="0 0 16 16">
                             <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855q-.215.403-.395.872c.705.157 1.472.257 2.282.287zM4.249 3.539q.214-.577.481-1.078a7 7 0 0 1 .597-.933A7 7 0 0 0 3.051 3.05q.544.277 1.198.49zM3.509 7.5c.036-1.07.188-2.087.436-3.008a9 9 0 0 1-1.565-.667A6.96 6.96 0 0 0 1.018 7.5zm1.4-2.741a12.3 12.3 0 0 0-.4 2.741H7.5V5.091c-.91-.03-1.783-.145-2.591-.332M8.5 5.09V7.5h2.99a12.3 12.3 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5c.035.987.176 1.914.399 2.741A13.6 13.6 0 0 1 7.5 10.91V8.5zm3.99 0v2.409c.91.03 1.783.145 2.591.332.223-.827.364-1.754.4-2.741zm-3.282 3.696q.18.469.395.872c.552 1.035 1.218 1.65 1.887 1.855V11.91c-.81.03-1.577.13-2.282.287zm.11 2.276a7 7 0 0 1-.598-.933 9 9 0 0 1-.481-1.079 8.4 8.4 0 0 0-1.198.49 7 7 0 0 0 2.276 1.522zm-1.383-2.964A13.4 13.4 0 0 1 3.508 8.5h-2.49a6.96 6.96 0 0 0 1.362 3.675c.47-.258.995-.482 1.565-.667m6.728 2.964a7 7 0 0 0 2.275-1.521 8.4 8.4 0 0 0-1.197-.49 9 9 0 0 1-.481 1.078 7 7 0 0 1-.597.933M8.5 11.909v3.014c.67-.204 1.335-.82 1.887-1.855q.216-.403.395-.872A12.6 12.6 0 0 0 8.5 11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.96 6.96 0 0 0 14.982 8.5h-2.49a13.4 13.4 0 0 1-.437 3.008M14.982 7.5a6.96 6.96 0 0 0-1.362-3.675c-.47.258-.995.482-1.565.667.248.92.4 1.938.437 3.008zM11.27 2.461q.266.502.482 1.078a8.4 8.4 0 0 0 1.196-.49 7 7 0 0 0-2.275-1.52c.218.283.418.597.597.932m-.488 1.343a8 8 0 0 0-.395-.872C9.835 1.897 9.17 1.282 8.5 1.077V4.09c.81-.03 1.577-.13 2.282-.287z"/>
                         </svg>
-                    </div> 
+                    </div>
+                    <!-- Significance content -->
                     <h3 class="h5 text-center mb-4"><b>Significance</b></h3>
                     <p>Māori culture is central to Aotearoa New Zealand's identity, reflecting deep connections to land, ancestry, and tradition. By exploring these cultural and historical foundations, we hope to allow for you to go out and discover the enriching history and culture yourself, fostering appreciation, respect, and preservation of Māori heritage.</p>
                 </div>
             </div>
         </section>
 
+        <!-- Section with links to Historical Routes & Resources pages -->
         <section class="container-fluid px-3 px-md-5 mt-5" aria-label="Explore Other Pages">
             <div class="row g-4">
+                <!-- Historical routes card -->
                 <div class="col-12 col-md-6 col-lg-6 d-flex justify-content-md-center">
                     <article class="card w-100 h-100 shadow-sm">
+                        <!-- Image of historical routes -->
                         <img src="../static/index_page/historicalroutes.jpg" class="card-img-top img-fluid" alt="Building up in mountains overlooking river beneath">
+                        <!-- Historical routes content -->
                         <div class="card-body">
                             <h4 class="h5 card-title"><b>Find pre-existing routes</b></h4>
                             <p class="card-text">Explore pre-determined routes with key landmarks and directions already put in place.</p>
+                            <!-- Button linking to historical routes page -->
                             <a href="routes.html" class="btn btn-primary d-block mx-auto">Go to Historical Routes</a>
                         </div>
                     </article>
                 </div>
-        
+                
+                <!-- Resources card -->
                 <div class="col-12 col-md-6 col-lg-6 d-flex justify-content-md-center">
                     <article class="card w-100 h-100 shadow-sm">
+                        <!-- Image for resources -->
                         <img src="../static/index_page/resources.jpg" class="card-img-top img-fluid" alt="Engraved Māori artwork on a rock surrounded by water">
+                        <!-- Resources content -->
                         <div class="card-body">
                             <h4 class="h5 card-title"><b>Find additional resources</b></h4>
                             <p class="card-text">Learn more about the Māori history, culture and language through external sources.</p>
+                            <!-- Button linking to resources page -->
                             <a href="resources.html" class="btn btn-primary d-block mx-auto">Go to Resources</a>
                         </div>
                     </article>
@@ -132,10 +170,12 @@
         </section>
     </main>
 
+    <!-- Footer section -->
     <footer class="bg-secondary py-3 my-4">
         <div class="container">
             <h2 class="h5 text-center text-body-secondary py-3">Māori Tourism</h2> 
 
+            <!-- Footer navigation links -->
             <nav aria-label="Footer Navigation">
                 <ul class="nav justify-content-center border-top py-2 mb-0"> 
                     <li class="nav-item">
@@ -155,6 +195,7 @@
         </div>
     </footer>
 
+    <!-- Implemented Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

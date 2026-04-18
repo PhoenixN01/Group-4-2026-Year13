@@ -1,6 +1,7 @@
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
+// Coordinates for different routes
 const routeCoords = {
     landMarch: [
         [172.7975, -34.5046], // Te Hāpua
@@ -57,11 +58,13 @@ const routeCoords = {
 };
 
 let map;
-let currentMarkers = [];
+let currentMarkers = []; // Store markers for later removal
 
+// Function to intialise and open map within a modal
 async function openModalMap(containerId, coords) {
     if (map) map.remove(); // Clear old map to prevent memory leaks
 
+    // Initialising a new map
     map = new maplibregl.Map({
         container: containerId,
         style: 'https://api.maptiler.com/maps/streets/style.json?key=Nh1VoYoYkD3jnoS91PIq',
@@ -71,9 +74,11 @@ async function openModalMap(containerId, coords) {
         bearing: 20
     });
 
+    // Adding navigation controls
     map.addControl(new maplibregl.NavigationControl());
 
     map.on('load', async () => {
+        // Add a layer for 3D buildings
         map.addLayer({
             id: '3d-buildings',
             source: 'openmaptiles',
@@ -89,19 +94,23 @@ async function openModalMap(containerId, coords) {
             }
         });
 
+        // Create a string of coordinates for routing
         const coordString = coords.map(c => `${c[0]},${c[1]}`).join(';');
         const url = `https://router.project-osrm.org/route/v1/driving/${coordString}?overview=full&geometries=geojson`;
 
+        // Fetch the route data from ORSM
         try {
             const res = await fetch(url);
             const data = await res.json();
             const geometry = data.routes[0].geometry;
 
+            // Turns the route into a geojson layer
             map.addSource('route', {
                 type: 'geojson',
                 data: { type: 'Feature', geometry }
             });
 
+            // Styling the route line
             map.addLayer({
                 id: 'route-line',
                 type: 'line',
@@ -110,32 +119,36 @@ async function openModalMap(containerId, coords) {
                 paint: { 'line-color': '#007AFF', 'line-width': 4 }
             });
 
+            // Set map bounds to fit all route points
             const bounds = new maplibregl.LngLatBounds();
             coords.forEach((coord, i) => {
-                const color = (i === 0) ? 'green' : 'red';
+                const color = (i === 0) ? 'green' : 'red'; // First marker is green, others are red
                 const marker = new maplibregl.Marker({ color })
-                    .setLngLat(coord)
-                    .addTo(map);
+                    .setLngLat(coord) // Set marker position
+                    .addTo(map); // Add marker to map
                 
-                currentMarkers.push(marker);
-                bounds.extend(coord);
+                currentMarkers.push(marker); // Store markers
+                bounds.extend(coord); // Extend bounds to include each marker
             });
 
+            // Fit map to bounds with padding
             map.fitBounds(bounds, { padding: 80, duration: 1500 });
 
         } catch (error) {
-            console.error("OSRM Routing failed:", error);
+            console.error("OSRM Routing failed:", error); // Error handling for route fetch
         }
     });
 }
 
+// Add event listeners to buttons to open modals and display routes
 document.querySelectorAll('button[data-route]').forEach(btn => {
-    const modalId = btn.getAttribute('data-bs-target');
+    const modalId = btn.getAttribute('data-bs-target'); // Find and get target modal ID 
     const modalEl = document.querySelector(modalId);
 
+    // Event listener for when the modal is opened
     modalEl.addEventListener('shown.bs.modal', () => {
         const routeKey = btn.getAttribute('data-route');
         const containerId = `${modalEl.id}-map`;
-        openModalMap(containerId, routeCoords[routeKey]);
+        openModalMap(containerId, routeCoords[routeKey]); // Open map with corresponding coordinates
     });
 });
