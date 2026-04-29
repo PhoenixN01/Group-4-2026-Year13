@@ -41,10 +41,39 @@
     </picture>
     <main>
         <div class="container my-5">
-            <div class="">
-                <h1 class="text-center">Trip Planner</h1>
+            <div class="row">
+                <div class="col-12 mb-3 mb-lg-5">
+                    <h1 class="text-center">Trip Planner</h1>
+                </div>
             </div>
-            <div id="map"></div>
+            <div class="row">
+                <div class="col-12 col-lg-3" id="planner-selection">
+                    <h4>How would you like to plan your trip:</h4>
+                    <button id="planner-regionOption">Find attractions near your destinations</button>
+                    <button id="planner-categoryOption">Pick from a range of categories</button>
+                    <select id="planner-locationSelect"></select>
+                    <button id="planner-tripExport">Export</button>
+                    <ol type="1" id="planner-tripList"></ol>
+                </div>
+                <div class="col-12 col-lg-5">
+                    <div class="rounded-4" id="map"></div>
+                </div>
+                <div class="col-12 col-lg-4 card my-3 my-lg-0" id="planner-preview">
+                    <div class="planner-previewMain">
+                        <figure class="mt-3">
+                            <img class="card-img-top img-fluid" id="planner-previewImage">
+                            <figcaption class="text-center" id="planner-previewCaption">Image by <a id="planner-previewRef"></a>. Licensed by <a id="planner-previewCC"></a></figcaption>
+                        </figure>
+                        <article class="card-body">
+                            <h2 class="card-title" id="planner-previewTitle"></h2>
+                            <p class="card-text" id="planner-previewDescription"></p>
+                            <button class="btn btn-primary" id="planner-addToTrip">Add To Trip</button>
+                            <button class="btn btn-secondary" id="planner-previewExit">Clear</button>
+                        </article>
+                    </div>
+                    <h5 class="mt-4" id="planner-previewPrompt">Select a filter and click on a marker on the map to begin. <br><br><br>If your happy with your trip, click export </h5>
+                </div>
+            </div>
         </div>
     </main>
     <div class="bg-secondary">
@@ -59,6 +88,35 @@
                     <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Resources</a></li> 
                 </ul> 
             </footer> 
+        </div>
+    </div>
+    <div class="modal fade" id="planner-exportModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Trip Ready</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    Your trip has been generated. Open it in Google Maps to continue.
+                </div>
+
+                <div class="modal-footer">
+                    <a id="planner-exportGoBtn"
+                       class="btn btn-primary"
+                       target="_blank">
+                        Take me there
+                    </a>
+
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
     <script type="module" crossorigin src="./scripts/planner_map.js"></script>

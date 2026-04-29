@@ -7,7 +7,6 @@
     <style>
         html, body { margin: 0; height: 100%; }
         #map { width: 600px; height: 400px; margin: auto;}
-        #planner { margin-bottom: 50px; }
         .marker {
             width: 14px;
             height: 14px;
@@ -15,6 +14,10 @@
             cursor: pointer;
             border: 2px solid white;
             z-index: 10;
+        }
+
+        .planner-preview-main {
+            display: none;
         }
     </style>
 </head>
@@ -24,16 +27,25 @@
         <button id="planner-regionOption">Find attractions near your destinations</button>
         <button id="planner-categoryOption">Pick from a range of categories</button>
         <select id="planner-locationSelect"></select>
+        <button id="planner-tripExport">Export</button>
         <ol type="1" id="planner-tripList"></ol>
     </div>
     <div id="map"></div>
-    <button id="planner-tripExport">Export To Google Maps</button>
     <script type="module" src="./main.js"></script>
     <div id="planner-preview">
-        <h5 id="planner-preview-title">Select a location to begin</h5>
-        <img>
-        <p></p>
-        <button id="planner-preview-addToTrip"></button>
+        <div class="planner-previewMain" id="planner-preview-header">
+            <h3 id="planner-previewTitle">Select a location to begin</h3>
+            <button id="planner-previewExit">x</button>
+        </div>
+        <div class="planner-previewMain" id="planner-preview-content">
+            <figure>
+                <img id="planner-previewImage">
+                <figcaption id="planner-previewCaption">Image by <a id="planner-previewRef"></a>. Licensed by <a id="planner-previewCC"></a></figcaption>
+            </figure>
+            <p id="planner-previewDescription"></p>
+            <button id="planner-addToTrip">Add To Trip</button>
+        </div>
+        <h5 id="planner-previewPrompt">Select a marker on the map to begin. If your happy with your trip, click export </h5>
     </div>
 </body>
 </html>

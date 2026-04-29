@@ -2,16 +2,52 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>MapLibre Trial</title>
+    <title>Planner Map Dev Page</title>
 
     <style>
         html, body { margin: 0; height: 100%; }
-        #map { width: 100%; height: 400px; }
+        #map { width: 600px; height: 400px; margin: auto;}
+        #planner { margin-bottom: 50px; }
+        .marker {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+            z-index: 10;
+        }
+
+        .planner-preview-main {
+            display: none;
+        }
     </style>
-  <script type="module" crossorigin src="./assets/index-B_tW-rvX.js"></script>
+  <script type="module" crossorigin src="./assets/index-C9p2IEU_.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-B2k4QVOw.css">
 </head>
 <body>
+    <div id="planner-selection">
+        <h4>How would you like to plan your trip:</h4>
+        <button id="planner-regionOption">Find attractions near your destinations</button>
+        <button id="planner-categoryOption">Pick from a range of categories</button>
+        <select id="planner-locationSelect"></select>
+        <button id="planner-tripExport">Export</button>
+        <ol type="1" id="planner-tripList"></ol>
+    </div>
     <div id="map"></div>
+    <div id="planner-preview">
+        <div class="planner-previewMain" id="planner-preview-header">
+            <h3 id="planner-previewTitle">Select a location to begin</h3>
+            <button id="planner-previewExit">x</button>
+        </div>
+        <div class="planner-previewMain" id="planner-preview-content">
+            <figure>
+                <img id="planner-previewImage">
+                <figcaption id="planner-previewCaption">Image by <a id="planner-preview-ref"></a>. Licensed by <a id="planner-preview-cc"></a></figcaption>
+            </figure>
+            <p id="planner-previewDescription"></p>
+            <button id="planner-addToTrip">Add To Trip</button>
+        </div>
+        <h5 id="planner-previewPrompt">Select a marker on the map to begin. If your happy with your trip, click export </h5>
+    </div>
 </body>
 </html>
