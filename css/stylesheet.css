@@ -65,6 +65,10 @@ html {
     background-color: #E8EFEF !important;
 }
 
+.card-filler {
+    opacity: 0.6;
+}
+
 .btn-primary{
     background-color: var(--nav-background) !important;
     border-color: var(--nav-background) !important;
