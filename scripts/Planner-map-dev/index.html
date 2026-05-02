@@ -7,13 +7,8 @@
     <style>
         html, body { margin: 0; height: 100%; }
         #map { width: 600px; height: 400px; margin: auto;}
-        .marker {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid white;
-            z-index: 10;
+        .marker-hover {
+            filter: brightness(0.85);
         }
 
         .planner-preview-main {
@@ -33,11 +28,11 @@
     <div id="map"></div>
     <script type="module" src="./main.js"></script>
     <div id="planner-preview">
-        <div class="planner-previewMain" id="planner-preview-header">
+        <div class="planner-preview-main" id="planner-preview-header">
             <h3 id="planner-previewTitle">Select a location to begin</h3>
             <button id="planner-previewExit">x</button>
         </div>
-        <div class="planner-previewMain" id="planner-preview-content">
+        <div class="planner-preview-main" id="planner-preview-content">
             <figure>
                 <img id="planner-previewImage">
                 <figcaption id="planner-previewCaption">Image by <a id="planner-previewRef"></a>. Licensed by <a id="planner-previewCC"></a></figcaption>

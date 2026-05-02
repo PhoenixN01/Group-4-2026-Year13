@@ -7,21 +7,15 @@
     <style>
         html, body { margin: 0; height: 100%; }
         #map { width: 600px; height: 400px; margin: auto;}
-        #planner { margin-bottom: 50px; }
-        .marker {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid white;
-            z-index: 10;
+        .marker-hover {
+            filter: brightness(0.85);
         }
 
         .planner-preview-main {
             display: none;
         }
     </style>
-  <script type="module" crossorigin src="./assets/index-C9p2IEU_.js"></script>
+  <script type="module" crossorigin src="./assets/index-Bi0ymYJD.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-B2k4QVOw.css">
 </head>
 <body>
@@ -35,14 +29,14 @@
     </div>
     <div id="map"></div>
     <div id="planner-preview">
-        <div class="planner-previewMain" id="planner-preview-header">
+        <div class="planner-preview-main" id="planner-preview-header">
             <h3 id="planner-previewTitle">Select a location to begin</h3>
             <button id="planner-previewExit">x</button>
         </div>
-        <div class="planner-previewMain" id="planner-preview-content">
+        <div class="planner-preview-main" id="planner-preview-content">
             <figure>
                 <img id="planner-previewImage">
-                <figcaption id="planner-previewCaption">Image by <a id="planner-preview-ref"></a>. Licensed by <a id="planner-preview-cc"></a></figcaption>
+                <figcaption id="planner-previewCaption">Image by <a id="planner-previewRef"></a>. Licensed by <a id="planner-previewCC"></a></figcaption>
             </figure>
             <p id="planner-previewDescription"></p>
             <button id="planner-addToTrip">Add To Trip</button>

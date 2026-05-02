@@ -166,6 +166,7 @@ let previewRef = document.getElementById('planner-previewRef');
 let previewCC = document.getElementById('planner-previewCC');
 let previewDescription = document.getElementById('planner-previewDescription');
 let previewPrompt = document.getElementById('planner-previewPrompt');
+let previewControls = document.getElementById('planner-previewControls');
 let currentPreviewId = null;
 
 let regionDict = {};
@@ -195,8 +196,9 @@ initiateLookup();
 
 function suggestionPreview(id = "none") {
     if (id == "none") {
-        previewPrompt.style.display = "block";
+        previewPrompt.style.display = 'block';
         previewMain.forEach(div => div.style.display = 'none');
+        previewControls.style.display = 'none';
         currentPreviewId = null;
         return;
     }
@@ -208,6 +210,7 @@ function suggestionPreview(id = "none") {
 
     previewPrompt.style.display = 'none';
     previewMain.forEach(div => div.style.display = 'block');
+    previewControls.style.display = 'flex';
 
     previewTitle.textContent = loc.name;
     previewDescription.textContent = loc.description;
@@ -222,13 +225,22 @@ function suggestionPreview(id = "none") {
 
 function createMarker(id, coords, color, onClick) {
     const marker = new maplibregl.Marker({ color }).setLngLat(coords).addTo(map);
+    const markerEl = marker.getElement();
 
     if (onClick) {
-        marker.getElement().addEventListener('click', (e) => {
+        markerEl.addEventListener('click', (e) => {
             e.stopPropagation();
             onClick(id);
         });
     }
+
+    markerEl.addEventListener('mouseenter', () => {
+        markerEl.classList.add('marker-hover');
+    });
+
+    markerEl.addEventListener('mouseleave', () => {
+        markerEl.classList.remove('marker-hover');
+    });
 
     return marker;
 }
@@ -254,6 +266,7 @@ function handleSuggestionClick(id) {
 
     rebuildRoute();
     renderTripList();
+    updateCamera();
 }
 
 function addTripMarker(id) {
@@ -286,7 +299,7 @@ function showSuggestions() {
         console.log(marker.getElement());
     });
     console.log(suggestionMarkers);
-    fitMapToMarkers(suggestionMarkers);
+    updateCamera();
 }
 
 function fitMapToMarkers(dict) {
@@ -297,6 +310,37 @@ function fitMapToMarkers(dict) {
     if (!bounds.isEmpty()) {
         map.fitBounds(bounds, { padding: 80, duration: 5000 });
     }
+}
+
+function getRelevantTripMarkers() {
+    const filtered = {};
+
+    for (const [id, marker] of Object.entries(tripMarkers)) {
+        const loc = data.locations[id];
+
+        if (filterType === "regions") {
+            if (loc.region === dropDown.value) {
+                filtered[id] = marker;
+            }
+        }
+
+        if (filterType === "categories") {
+            if (loc.categories.includes(dropDown.value)) {
+                filtered[id] = marker;
+            }
+        }
+    }
+
+    return filtered;
+}
+
+function updateCamera() {
+    const relevantTripMarkers = getRelevantTripMarkers();
+
+    fitMapToMarkers({
+        ...suggestionMarkers,
+        ...relevantTripMarkers
+    });
 }
 
 function handleFilterSelection() {
@@ -318,26 +362,39 @@ function renderTripList() {
 
     tripStops.forEach((stop, index) => {
         const loc = data.locations[stop.id];
+
         const li = document.createElement('li');
-        li.textContent = loc.name;
+        li.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
         li.id = `planner-${stop.id}-tripItem`;
+
+        const span = document.createElement('span');
+        span.textContent = loc.name;
+        span.classList.add("item-text");
+        span.id = `planner-${stop.id}-tripName`;
+
+        const btnDiv = document.createElement('div');
+        btnDiv.classList.add("btn-group", "btn-group-sm", "ms-auto");
 
         const remove = document.createElement('button');
         remove.textContent = "✕";
+        remove.classList.add("btn", "btn-outline-danger");
         remove.onclick = () => removeStop(index);
         remove.id = `planner-${stop.id}-removeButton`;
 
         const up = document.createElement('button');
         up.textContent = "↑";
+        up.classList.add("btn", "btn-outline-secondary");
         up.onclick = () => moveStop(index, -1);
         up.id = `planner-${stop.id}-upButton`;
 
         const down = document.createElement('button');
         down.textContent = "↓";
+        down.classList.add("btn", "btn-outline-secondary")
         down.onclick = () => moveStop(index, 1);
         down.id = `planner-${stop.id}-downButton`;
 
-        li.append(up, down, remove);
+        btnDiv.append(up, down, remove)
+        li.append(span, btnDiv);
         locationList.appendChild(li);
     });
     console.log(tripStops);
@@ -483,8 +540,22 @@ function dropDownOptions(filter) {
 }
 
 function setupUI() {
-    document.getElementById('planner-regionOption').onclick = () => dropDownOptions("regions");
-    document.getElementById('planner-categoryOption').onclick = () => dropDownOptions("categories");
+    let regionOption = document.getElementById('planner-regionOption');
+    let categoryOption = document.getElementById('planner-categoryOption');
+
+    regionOption.onclick = () => {
+        categoryOption.classList.remove('active');
+        regionOption.classList.add('active');
+
+        dropDownOptions("regions");
+    };
+
+    categoryOption.onclick = () => {
+        regionOption.classList.remove('active');
+        categoryOption.classList.add('active');
+
+        dropDownOptions("categories");
+    };
     dropDown.onchange = handleFilterSelection;
 
     document.getElementById('planner-previewExit').onclick = () => {
@@ -502,8 +573,8 @@ function setupUI() {
 map = new maplibregl.Map({
     container: 'map',
     style: 'https://api.maptiler.com/maps/streets/style.json?key=Nh1VoYoYkD3jnoS91PIq',
-    center: [174.76, -36.85],
-    zoom: 12
+    center: [174.76, -33.85],
+    zoom: 3
 });
 
 map.on('load', () => {
@@ -527,3 +598,8 @@ map.on('load', () => {
 });
 
 map.setPitch(30);
+let bounds = [
+    [154.23211799401287, -51.971820916688266],
+    [186.81582372033893, -31.961208260269977]
+];
+map.setMaxBounds(bounds);

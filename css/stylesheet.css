@@ -4,6 +4,13 @@
     --nav-text: #dadada;
     --bs-secondary-color: #EEEEEE !important;
     --bs-secondary-rgb: 5, 43, 117 !important;
+
+    --tr-black: #111111;
+    --tr-red: #C1272D;
+    --tr-white: #F5F5F5;
+
+    --tr-accent: var(--tr-red);
+    --tr-divider: rgba(193, 39, 45, 0.25);
 }
 
 html {
@@ -11,7 +18,15 @@ html {
 }
 
 .bg-navbar{
-    background-color: var(--nav-background) !important;
+    background: linear-gradient(
+        to right,
+        var(--tr-black) 0%,
+        var(--nav-background) 60%
+    ) !important;
+}
+
+.text-muted-dark {
+    color: rgba(0, 0, 0, 0.65);
 }
 
 .navbar{
@@ -62,14 +77,18 @@ html {
     margin: auto;
 }
 
-.card{
+/* .card{
     background-color: #E8EFEF !important;
-}
+} */
 
 .btn-primary{
-    background-color: var(--nav-background) !important;
-    border-color: var(--nav-background) !important;
+    background-color: var(--tr-accent) !important;
+    border-color: var(--tr-accent) !important;
     width: 200px;
+}
+
+.btn-primary:hover{
+    background-color: #a61f24 !important;
 }
 
 .btn-primary:hover{
@@ -79,11 +98,16 @@ html {
 
 /* Planner.html Styling */
 #map { 
-    width: 100%; height: 550px; 
+    width: 100%; 
+    min-height: 350px;
 }
 
-.planner-previewMain {
+.planner-previewMain, #planner-previewControls {
     display: none;
+}
+
+#planner-selection {
+    min-height: 200px;
 }
 
 .hero-content {
@@ -95,4 +119,81 @@ html {
 .bg-body-tertiary {
     --bs-bg-opacity: 0.6 !important;
 }
+
+.marker-hover {
+    filter: brightness(0.85);
+}
+
+.card{
+    background-color: #E8EFEF !important;
+    border-top: 3px solid var(--tr-accent);
+}
 /* End of Planner.html Styling */
+
+body{
+    color: var(--tr-black);
+}
+
+.navbar{
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+}
+
+.footer{
+    background-color: var(--tr-black);
+    color: var(--tr-white);
+}
+
+.hero::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 120px;
+    height: 120px;
+    background: url('./../static/planner/koru.svg') no-repeat;
+    opacity: 0.08;
+}
+
+@media screen and (min-width: 992px) {
+    #planner-selection, #map, .planner-preview, .preview-empty {
+        height: 600px;
+        max-height: 600px;
+    }
+
+    .preview-empty {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.section-divider {
+    width: 80%;
+    height: 3px;
+    background-color: var(--tr-accent);
+    margin: 2rem auto;
+    border-radius: 2px;
+}
+
+.preview-empty {
+    position: relative;
+    min-height: 300px;
+}
+
+.preview-empty::after {
+    content: "";
+    position: absolute;
+
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -35%);
+
+    width: 120px;
+    height: 120px;
+
+    background: url('../static/planner/koru.svg') no-repeat center;
+    background-size: contain;
+
+    opacity: 0.3;
+    pointer-events: none;
+}
