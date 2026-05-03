@@ -217,19 +217,19 @@ body{
     top: 5%;
     left: 0px;
 
-    width: 320px;
+    width: 75%;
     height: 90%;
 
     background: white;
     z-index: 0;
 
-    transform: translateX(-110%);
+    transform: translateX(-130%);
     transition: transform 0.25s ease;
 }
 
 /* Panel animation */
 .planner-accPanel.open {
-    transform: translateX(20%);
+    transform: translateX(15%);
 }
 
 /* Accessibility marker list */
@@ -251,8 +251,8 @@ body{
 .planner-map-btn {
     position: absolute;
 
-    bottom: 5%;
-    left: 35%;
+    top: 5%;
+    left: 30%;
 
     z-index: 10;
 

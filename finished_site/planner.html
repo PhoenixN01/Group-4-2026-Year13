@@ -59,7 +59,7 @@
             <div class="row">
 
                 <!-- Filter and Trip Overview Section -->
-                <section class="col-12 col-lg-4 card rounded-4 my-3 z-1" id="planner-selection">
+                <div class="col-12 col-lg-4 card rounded-4 my-3 z-1" id="planner-selection">
                      <div class="row justify-content-center my-2" role="group" aria-label="Filter locations">
                         <button class="col-5 btn btn-outline-primary rounded-5 m-1" id="planner-regionOption" aria-pressed="false">By Region</button>
                         <button class="col-5 btn btn-outline-primary rounded-5 m-1" id="planner-categoryOption" aria-pressed="false">By Category</button>
@@ -69,13 +69,13 @@
                         <ol type="1" class="list-group list-group-numbered" id="planner-tripList" aria-label="Trip stops in order"></ol>
                     </div>
                     <button class="mb-3 btn mx-auto" id="planner-tripExport">Export</button>
-                </section>
+                </div>
 
                 <!-- Map / Location List Section -->
-                <section class="col-12 col-lg-4 my-3 z-0" id="planner-mapContainer">
+                <section class="col-12 col-lg-4 my-3 z-0 d-grid place-items-center" id="planner-mapContainer">
                     <div class="rounded-4 h-100" id="planner-map" role="region" aria-label="Interactive map showing Māori cultural and historical locations across New Zealand"></div>
                     <button id="planner-openList" class="planner-map-btn z-0 btn btn-outline-secondary" aria-controls="planner-mapListPanel" aria-expanded="false" aria-label="Open a list of all locations">Browse locations</button>
-                    <div id="planner-mapListPanel"class="planner-accPanel z-1 card rounded-4" role="dialog" aria-modal="true" aria-labelledby="planner-listTitle" aria-hidden="true">
+                    <div id="planner-mapListPanel" class="planner-accPanel z-1 card rounded-4" role="dialog" aria-modal="true" aria-labelledby="planner-listTitle" aria-hidden="true">
                         <h2 id="planner-listTitle" class="planner-accListTitle pt-2 px-2 text-center">All Locations</h2>
                         <ul id="planner-mapList" class="px-2"></ul>
                         <button id="planner-closeList" class="mb-3 mt-auto mx-auto px-2 pb-2 btn btn-outline-primary" aria-label="Close Location List">Close</button>
@@ -87,17 +87,17 @@
                     <!-- Dynamic Preview -->
                     <div id="planner-previewMain" aria-live="polite" aria-atomic="true" role="region" aria-label="Location preview">
                         <figure class="mt-3">
-                            <img class="card-img-top img-fluid" id="planner-previewImage" alt="">
+                            <img class="card-img-top img-fluid" id="planner-previewImage" alt="preview image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==">
                             <figcaption class="text-center text-secondary" id="planner-previewCaption">Image by <a id="planner-previewRef"></a>. Licensed by <a id="planner-previewCC"></a></figcaption>
                         </figure>
                         <article class="card-body my-auto">
-                            <h2 class="card-title" id="planner-previewTitle"></h2>
+                            <h2 class="card-title" id="planner-previewTitle">Preview Title Inserted Here</h2>
                             <p class="card-text" id="planner-previewDescription"></p>
                         </article>
                     </div>
                     <!-- Default Prompt (When no location is currently selected) -->
                     <div class="preview-empty text-center" id="planner-previewPrompt">
-                        <h5 class="mt-4">Click on a marker to preview here. <br><br><br>If your happy with your trip, click export </h5>
+                        <h3 class="mt-4">Click on a marker to preview here. <br><br><br>If your happy with your trip, click export </h3>
                     </div>
 
                     <!-- Location Action Buttons -->
@@ -113,7 +113,7 @@
         <div class="container">
             <!-- Footer -->
             <footer class="py-3 my-4"> 
-                <h5 class="text-center text-body-secondary py-3">Māori Tourism</h5> 
+                <h4 class="text-center text-body-secondary py-3">Māori Tourism</h4> 
                 <ul class="nav justify-content-center border-top py-2 mb-0"> 
                     <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li> 
                     <li class="nav-item"><a href="planner.html" class="nav-link px-2 text-body-secondary">Planner</a></li> 
@@ -137,7 +137,7 @@
                     Your trip has been generated. Open it in Google Maps to continue.
                 </div>
                 <div class="modal-footer">
-                    <a id="planner-exportGoBtn" class="btn btn-primary" target="_blank">Take me there</a>
+                    <a id="planner-exportGoBtn" class="btn btn-primary" target="_blank" href="#">Take me there</a>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -145,7 +145,7 @@
     </div>
 
     <!-- Tutorial Modal Popup -->
-    <div class="modal fade" id="tutorialModal" tabindex="-1" aria-labelledby="tutorialModalTitle" aria-hidden="true">
+    <div class="modal fade" id="tutorialModal" tabindex="-1" aria-labelledby="tutorialModalTitle" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
