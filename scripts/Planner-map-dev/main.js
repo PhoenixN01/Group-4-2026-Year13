@@ -8,7 +8,7 @@ const data = {
             region: "northland",
             coords: [174.08, -35.26],
             categories: ["colonialInteraction", "significantEvents"],
-            description: "Site where the Treaty of Waitangi was signed in 1840.",
+            description: "Historic site where the Treaty of Waitangi was first signed in 1840 between representatives of the British Crown and various Māori chiefs, marking a foundational moment in New Zealand’s history.",
             image: {
                 source: "./static/planner/waitangi.png",
                 alt: "Māori Waka at Waitangi",
@@ -21,7 +21,7 @@ const data = {
             region: "northland",
             coords: [172.67, -34.43],
             categories: ["spiritualSignificance"],
-            description: "Sacred place where Māori believe spirits depart for the afterlife.",
+            description: "Highly sacred site in Māori tradition, regarded as the departure point where spirits of the deceased travel to the ancestral homeland beyond the horizon.",
             image: {
                 source: "./static/planner/cape_reinga.png",
                 alt: "Lighthouse at Cape Reinga",
@@ -34,7 +34,7 @@ const data = {
             region: "auckland",
             coords: [174.78, -36.86],
             categories: ["modernMāoriCulture", "significantEvents"],
-            description: "Museum showcasing Māori culture and New Zealand history.",
+            description: "Major national museum and war memorial that presents New Zealand’s military history alongside extensive exhibitions on Māori culture, heritage, and taonga (treasures).",
             image: {
                 source: "./static/planner/auckland_war_memorial.png",
                 alt: "Auckland War Memorial Museum",
@@ -47,7 +47,7 @@ const data = {
             region: "auckland",
             coords: [174.84, -36.85],
             categories: ["colonialInteraction", "modernMāoriCulture"],
-            description: "Site of the 1977–78 Ngāti Whātua occupation protest.",
+            description: "Significant coastal headland and site of the 1977–1978 occupation protest led by Ngāti Whātua, which became a landmark event in modern Māori land rights activism.",
             image: {
                 source: "./static/planner/bastion_point.png",
                 alt: "Eternal Flame Memorial in New Zealand",
@@ -60,7 +60,7 @@ const data = {
             region: "waikato",
             coords: [175.13, -37.43],
             categories: ["significantEvents", "colonialInteraction"],
-            description: "Major site of a battle during the Waikato Wars.",
+            description: "Fortified pā site and key battleground during the Waikato Wars in 1863, known for its strategic importance and one of the earliest major conflicts of the New Zealand Wars.",
             image: {
                 source: "./static/planner/rangiriri.png",
                 alt: "Rangiriri Trenches",
@@ -73,7 +73,7 @@ const data = {
             region: "waikato",
             coords: [175.15, -37.55],
             categories: ["modernMāoriCulture"],
-            description: "Principal marae of the Māori King Movement.",
+            description: "Principal marae of the Māori King Movement (Kīngitanga), serving as a central cultural, political, and ceremonial gathering place for Waikato-Tainui iwi.",
             image: {
                 source: "./static/planner/turangawaewae.png",
                 alt: "Mahinarangi House",
@@ -86,7 +86,7 @@ const data = {
             region: "centralNorthIsland",
             coords: [176.25, -38.14],
             categories: ["geothermal", "modernMāoriCulture"],
-            description: "Cultural centre featuring Māori arts and geothermal activity.",
+            description: "Cultural and geothermal park combining active geothermal features with Māori arts, carving, and weaving traditions, operating as a major centre for cultural preservation and education.",
             image: {
                 source: "./static/planner/te_puia.png",
                 alt: "Te Puia Springs",
@@ -99,7 +99,7 @@ const data = {
             region: "centralNorthIsland",
             coords: [176.25, -38.13],
             categories: ["livingCulture", "spiritualSignificance"],
-            description: "Living Māori village in Rotorua with strong cultural traditions.",
+            description: "Historic living Māori village in Rotorua where traditional customs, spiritual practices, and community life continue alongside contemporary daily living.",
             image: {
                 source: "./static/planner/ohinemutu.png",
                 alt: "St Faiths Anglican Church",
@@ -112,7 +112,7 @@ const data = {
             region: "centralNorthIsland",
             coords: [177.15, -38.63],
             categories: ["spiritualSignificance", "significantEvents"],
-            description: "Sacred mountain and site connected to Rua Kēnana.",
+            description: "Sacred mountain of deep spiritual significance, associated with the prophet Rua Kēnana and the Ringatū faith, and a symbol of Māori resistance and identity.",
             image: {
                 source: "./static/planner/maungapohatu.png",
                 alt: "Waikaremoana, Urewera, New Zealand",
@@ -125,7 +125,7 @@ const data = {
             region: "southIsland",
             coords: [172.97, -43.75],
             categories: ["colonialInteraction", "significantEvents"],
-            description: "Location where the Treaty of Waitangi was signed in the South Island.",
+            description: "Important marae in the South Island where the Treaty of Waitangi was signed locally in 1840, representing early agreements between Māori and the Crown in the region.",
             image: {
                 source: "./static/planner/maungapohatu.png",
                 alt: "Onuku - Noho Marae",
@@ -255,7 +255,7 @@ function clearTripMarkers() {
     tripMarkers = {};
 }
 
-function handleSuggestionClick(id) {
+async function handleSuggestionClick(id) {
     if (tripStops.some(s => s.id === id)) return;
 
     suggestionMarkers[id]?.remove();
@@ -264,7 +264,7 @@ function handleSuggestionClick(id) {
     tripStops.push({ id });
     addTripMarker(id);
 
-    rebuildRoute();
+    await rebuildRoute();
     renderTripList();
     updateCamera();
 }
@@ -364,13 +364,38 @@ function renderTripList() {
         const loc = data.locations[stop.id];
 
         const li = document.createElement('li');
-        li.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+        li.classList.add("list-group-item", "d-flex", "justify-content-between");
         li.id = `planner-${stop.id}-tripItem`;
 
         const span = document.createElement('span');
         span.textContent = loc.name;
         span.classList.add("item-text");
         span.id = `planner-${stop.id}-tripName`;
+
+        const meta = document.createElement('small');
+        meta.classList.add("text-muted-dark", "d-block");
+        meta.style.lineHeight = "1.2";
+
+        let distanceText = "";
+        let timeText = "";
+
+        if (stop.distanceKm !== undefined && stop.distanceKm !== null) {
+            distanceText = stop.distanceKm.toFixed(1) + " km";
+        }
+
+        if (stop.travelTimeMin !== undefined && stop.travelTimeMin !== null) {
+            timeText = stop.travelTimeMin + " min";
+        }
+
+        if (distanceText !== "" && timeText !== "") {
+            meta.textContent = distanceText + " • " + timeText;
+        } else if (distanceText !== "") {
+            meta.textContent = distanceText;
+        } else if (timeText !== "") {
+            meta.textContent = timeText;
+        } else {
+            meta.textContent = "";
+        }
 
         const btnDiv = document.createElement('div');
         btnDiv.classList.add("btn-group", "btn-group-sm", "ms-auto");
@@ -393,30 +418,35 @@ function renderTripList() {
         down.onclick = () => moveStop(index, 1);
         down.id = `planner-${stop.id}-downButton`;
 
+        const wrapper = document.createElement('div');
+        wrapper.classList.add("d-flex", "flex-column", "align-items-start");
+
+        wrapper.append(span, meta);
+
         btnDiv.append(up, down, remove)
-        li.append(span, btnDiv);
+        li.append(wrapper, btnDiv);
         locationList.appendChild(li);
     });
     console.log(tripStops);
 }
 
-function removeStop(index) {
+async function removeStop(index) {
     const removed = tripStops.splice(index, 1)[0];
     tripMarkers[removed.id]?.remove();
     delete tripMarkers[removed.id];
 
     showSuggestions();
-    rebuildRoute();
+    await rebuildRoute();
     renderTripList();
 }
 
-function moveStop(index, dir) {
+async function moveStop(index, dir) {
     const newIndex = index + dir;
     if (newIndex < 0 || newIndex >= tripStops.length) return;
 
     [tripStops[index], tripStops[newIndex]] = [tripStops[newIndex], tripStops[index]];
 
-    rebuildRoute();
+    await rebuildRoute();
     renderTripList();
 }
 
@@ -461,9 +491,19 @@ async function rebuildRoute() {
 
     const segments = await Promise.all(routePromises);
 
+    tripStops.forEach(stop => {
+        stop.distanceKm = 0;
+        stop.travelTimeMin = 0;
+    });
+
     const coords = [];
 
     segments.forEach((seg, i) => {
+        const startStop = tripStops[i];
+
+        startStop.distanceKm = seg.distance / 1000;
+        startStop.travelTimeMin = Math.round(seg.duration / 60);
+
         const segmentCoords = seg.geometry.coordinates;
 
         if (i === 0) {

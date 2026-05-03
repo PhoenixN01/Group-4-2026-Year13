@@ -143,17 +143,6 @@ body{
     color: var(--tr-white);
 }
 
-.hero::after{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 120px;
-    height: 120px;
-    background: url('./../static/planner/koru.svg') no-repeat;
-    opacity: 0.08;
-}
-
 @media screen and (min-width: 992px) {
     #planner-selection, #map, .planner-preview, .preview-empty {
         height: 600px;
