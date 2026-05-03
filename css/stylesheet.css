@@ -17,12 +17,25 @@ html {
     height: 100%;
 }
 
+body{
+    color: var(--tr-black);
+}
+
+.footer{
+    background-color: var(--tr-black);
+    color: var(--tr-white);
+}
+
 .bg-navbar{
     background: linear-gradient(
         to right,
         var(--tr-black) 0%,
         var(--nav-background) 60%
     ) !important;
+}
+
+.bg-body-tertiary {
+    --bs-bg-opacity: 0.6 !important;
 }
 
 .text-muted-dark {
@@ -32,6 +45,7 @@ html {
 .navbar{
     padding-top: 0.5em;
     padding-bottom: 0.8em;
+    border-bottom: 2px solid rgba(0,0,0,0.2);
 }
 
 .navbar-nav .nav-link{
@@ -65,122 +79,17 @@ html {
     font-size: 1.5em;
 }
 
-
-/* End of Template Styling */
-
-/* Index Styling */
-
-/* General card styling */
-.card{
-    background-color: #E8EFEF !important;
-} */
-
-/* Styling for primary buttons */
-.btn-primary{
-    background-color: var(--tr-accent) !important;
-    border-color: var(--tr-accent) !important;
-    width: 200px;
-}
-
-.btn-primary:hover{
-    background-color: #a61f24 !important;
-}
-
-.btn-primary:hover{
-    background-color: #052a75ce !important;
-}
-/* End of Index.html Styling */
-
-/* Planner.html Styling */
-#map { 
-    width: 100%; 
-    min-height: 350px;
-}
-
-.planner-previewMain, #planner-previewControls {
-    display: none;
-}
-
-#planner-selection {
-    min-height: 200px;
-}
-
+/* Centering the hero content */
 .hero-content {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.bg-body-tertiary {
-    --bs-bg-opacity: 0.6 !important;
-}
+/* End of Template Styling */
 
-.marker-hover {
-    filter: brightness(0.85);
-}
+/* Index Styling */
 
-.card{
-    background-color: #E8EFEF !important;
-    border-top: 3px solid var(--tr-accent);
-}
-/* End of Planner.html Styling */
-
-body{
-    color: var(--tr-black);
-}
-
-.navbar{
-    border-bottom: 2px solid rgba(0,0,0,0.2);
-}
-
-.footer{
-    background-color: var(--tr-black);
-    color: var(--tr-white);
-}
-
-@media screen and (min-width: 992px) {
-    #planner-selection, #map, .planner-preview, .preview-empty {
-        height: 600px;
-        max-height: 600px;
-    }
-
-    .preview-empty {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-}
-
-.section-divider {
-    width: 80%;
-    height: 3px;
-    background-color: var(--tr-accent);
-    margin: 2rem auto;
-    border-radius: 2px;
-}
-
-.preview-empty {
-    position: relative;
-    min-height: 300px;
-}
-
-.preview-empty::after {
-    content: "";
-    position: absolute;
-
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -35%);
-
-    width: 120px;
-    height: 120px;
-
-    background: url('../static/planner/koru.svg') no-repeat center;
-    background-size: contain;
-
-    opacity: 0.3;
-    pointer-events: none;
-}
 /* Circle icon styling */
 .icon-circle {
     width: 70px;
@@ -198,13 +107,6 @@ body{
     height: 30px;
     color: white;
 }
-
-/* Centering the hero content */
-.hero-content {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
  
 /* Semi-transparent background for tertiary sections */
 .bg-body-tertiary {
@@ -218,14 +120,152 @@ body{
 
 /* End of Index Styling */
 
-/* Planner Styling */
+/* Planner.html Styling */
 
-#map{
-    width: 100%;
-    height: 400px;
+/* Default map dimensions xs+ */
+#planner-map { 
+    width: 100%; 
+    min-height: 350px;
 }
 
-/* End of Planner Styling */
+/* Hide preview display elements initially */
+#planner-previewMain, #planner-previewControls {
+    display: none;
+}
+
+/* Default selection panel dimensons for xs+ */
+#planner-selection {
+    min-height: 200px;
+}
+
+/* Position hero content over hero image */
+.hero-content {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Add hover effect to markers */
+.marker-hover {
+    filter: brightness(0.85);
+}
+
+
+/* Bootstrap Card Styling */
+.card{
+    background-color: #E8EFEF !important;
+    border-top: 3px solid var(--tr-accent);
+}
+
+/* Responsive sizing for main div panels */
+@media screen and (min-width: 992px) {
+    #planner-selection, #map, .planner-preview, .preview-empty {
+        height: 600px;
+        max-height: 600px;
+    }
+
+    .preview-empty {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Hero and main content divider styling */
+.section-divider {
+    width: 80%;
+    height: 3px;
+    background-color: var(--tr-accent);
+    margin: 2rem auto;
+    border-radius: 2px;
+}
+
+/* Default preview styling (deselected state) */
+.preview-empty {
+    position: relative;
+    min-height: 300px;
+}
+
+/* Add koru design to empty preview state */
+.preview-empty::after {
+    content: "";
+    position: absolute;
+
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -35%);
+
+    width: 120px;
+    height: 120px;
+
+    background: url('..//static/planner_page/koru.svg') no-repeat center;
+    background-size: contain;
+
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Map & Marker list container */
+#planner-mapContainer {
+    position: relative;
+    display: flex;
+}
+
+/* Accessibility panel */
+.planner-accPanel {
+    position: absolute;
+    top: 5%;
+    left: 0px;
+
+    width: 320px;
+    height: 90%;
+
+    background: white;
+    z-index: 0;
+
+    transform: translateX(-110%);
+    transition: transform 0.25s ease;
+}
+
+/* Panel animation */
+.planner-accPanel.open {
+    transform: translateX(20%);
+}
+
+/* Accessibility marker list */
+#planner-mapList {
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* Accessibility marker styling */
+#planner-mapList button {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+/* Accessibility open menu btn */
+.planner-map-btn {
+    position: absolute;
+
+    bottom: 5%;
+    left: 35%;
+
+    z-index: 10;
+
+    padding: 0.5rem 1rem;
+
+    background-color: transparent !important;
+    border-color: transparent !important;
+
+    cursor: pointer;
+}
+
+/* End of Planner.html Styling */
+
 
 /* Routes Styling */
 
@@ -246,18 +286,6 @@ body{
     border-width: 2px;
     color: #000000;
     width: 200px;
-}
-
-/* positioning hero content over image */
-.hero-content {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-/* adding transparency to hero content */
-.bg-body-tertiary {
-    --bs-bg-opacity: 0.6 !important;
 }
 
 /* End of Resource Styling */

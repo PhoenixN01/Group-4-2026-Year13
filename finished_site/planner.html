@@ -1,54 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Data -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template Page</title>
+    <title>Māori Tourism | Trip Planner</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/stylesheet.css">
     <link rel="stylesheet" crossorigin href="../css/planner_map.css">
-    <link rel="icon" type="image/png" href="../static/template/page-icon.png">
+    <link rel="icon" type="image/png" href="./../static/template/page-icon.png">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-navbar py-lg-3">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-navbar py-lg-3 z-2">
         <div class="container-fluid">
-            <a class="navbar-brand ms-lg-4" href="index.html"><img src="../static/template/logo.png"></a>
+            <a class="navbar-brand ms-lg-4" href="index.html"><img src="./../static/template/logo.png" alt="Māori Tourism home"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 px-lg-5 align-self-lg-center text-white">
                     <li class="nav-item mt-3 mt-lg-1 px-lg-2">
-                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link active" href="index.html">Home</a>
                     </li>
                     <li class="nav-item py-1 px-lg-2">
-                    <a class="nav-link" aria-current="page" href="planner.html"><strong>Trip Planner</strong></a>
+                        <a class="nav-link" aria-current="page" href="planner.html"><strong>Trip Planner</strong></a>
                     </li>
                     <li class="nav-item py-1 px-lg-2">
-                    <a class="nav-link" aria-current="page" href="routes.html">Historical Routes</a>
+                        <a class="nav-link" href="routes.html">Historical Routes</a>
                     </li>
                     <li class="nav-item py-1 px-lg-2">
-                    <a class="nav-link" aria-current="page" href="resources.html">Resources</a>
+                        <a class="nav-link" href="resources.html">Additional Resources</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <picture>
-        <source srcset="../static/template/hero_image.png" media="(max-width: 767px)">
-        <source srcset="../static/template/hero_image_wide.png" media="(min-width: 768px)">
-        <img src="../static/template/hero_image_wide.png" class="img-fluid mx-auto d-block" alt="Lake in front of Mountain Range">
-    </picture>
-    <main>
-        <div class="container my-5">
-            <div class="">
-                <h1 class="text-center">Trip Planner</h1>
+    <!-- Hero Section -->
+    <section class="hero position-relative d-flex justify-content-center z-1">
+        <picture>
+            <source srcset="../static/template/hero_image.png" media="(max-width: 767px)">
+            <source srcset="../static/template/hero_image_wide.png" media="(min-width: 768px)">
+            <img src="../static/template/hero_image_wide.png" class="img-fluid position-relative mx-auto d-block" alt="Lake in front of Mountain Range">
+        </picture>
+        <div class="container position-absolute hero-content z-1">
+            <div class="jumbotron p-4 mx-auto text-center bg-body-tertiary rounded-3">
+                <h1 class="text-body-emphasis">Trip Planner</h1>
+                <p class="text-muted-dark small">Whakaritea tō haerenga</p>
+                <p class="col-lg-8 mx-auto">Welcome to Trip Planner. From here you can design and create your own trip from our range of cultural and historical locations. If you would like a tutorial on how to use our trip planner, please click the button below:</p>
+                <button class="btn btn-info rounded-2" id="planner-openTutorial" data-bs-toggle="modal" data-bs-target="#tutorialModal">Open Tutorial</button>
             </div>
-            <div id="map"></div>
+        </div>
+    </section>
+    <!-- Visual Divider -->
+    <div class="section-divider"></div>
+    <main>
+        <div class="container my-5 content-section">
+            <div class="row">
+
+                <!-- Filter and Trip Overview Section -->
+                <section class="col-12 col-lg-4 card rounded-4 my-3 z-1" id="planner-selection">
+                     <div class="row justify-content-center my-2" role="group" aria-label="Filter locations">
+                        <button class="col-5 btn btn-outline-primary rounded-5 m-1" id="planner-regionOption" aria-pressed="false">By Region</button>
+                        <button class="col-5 btn btn-outline-primary rounded-5 m-1" id="planner-categoryOption" aria-pressed="false">By Category</button>
+                    </div>
+                    <select class="form-select mb-3" id="planner-locationSelect" aria-label="Select Region or Category"><option>Select a filter to begin</option></select>
+                    <div class="h-100 overflow-auto">
+                        <ol type="1" class="list-group list-group-numbered" id="planner-tripList" aria-label="Trip stops in order"></ol>
+                    </div>
+                    <button class="mb-3 btn mx-auto" id="planner-tripExport">Export</button>
+                </section>
+
+                <!-- Map / Location List Section -->
+                <section class="col-12 col-lg-4 my-3 z-0" id="planner-mapContainer">
+                    <div class="rounded-4 h-100" id="planner-map" role="region" aria-label="Interactive map showing Māori cultural and historical locations across New Zealand"></div>
+                    <button id="planner-openList" class="planner-map-btn z-0 btn btn-outline-secondary" aria-controls="planner-mapListPanel" aria-expanded="false" aria-label="Open a list of all locations">Browse locations</button>
+                    <div id="planner-mapListPanel"class="planner-accPanel z-1 card rounded-4" role="dialog" aria-modal="true" aria-labelledby="planner-listTitle" aria-hidden="true">
+                        <h2 id="planner-listTitle" class="planner-accListTitle pt-2 px-2 text-center">All Locations</h2>
+                        <ul id="planner-mapList" class="px-2"></ul>
+                        <button id="planner-closeList" class="mb-3 mt-auto mx-auto px-2 pb-2 btn btn-outline-primary" aria-label="Close Location List">Close</button>
+                    </div>
+                </section>
+
+                <!-- Preview Section -->
+                <div class="col-12 col-lg-4 card my-3 rounded-4 z-1" id="planner-preview">
+                    <!-- Dynamic Preview -->
+                    <div id="planner-previewMain" aria-live="polite" aria-atomic="true" role="region" aria-label="Location preview">
+                        <figure class="mt-3">
+                            <img class="card-img-top img-fluid" id="planner-previewImage" alt="">
+                            <figcaption class="text-center text-secondary" id="planner-previewCaption">Image by <a id="planner-previewRef"></a>. Licensed by <a id="planner-previewCC"></a></figcaption>
+                        </figure>
+                        <article class="card-body my-auto">
+                            <h2 class="card-title" id="planner-previewTitle"></h2>
+                            <p class="card-text" id="planner-previewDescription"></p>
+                        </article>
+                    </div>
+                    <!-- Default Prompt (When no location is currently selected) -->
+                    <div class="preview-empty text-center" id="planner-previewPrompt">
+                        <h5 class="mt-4">Click on a marker to preview here. <br><br><br>If your happy with your trip, click export </h5>
+                    </div>
+
+                    <!-- Location Action Buttons -->
+                    <div class="mt-auto mb-1 justify-content-center" id="planner-previewControls">
+                        <button class="btn btn-primary m-1" id="planner-addToTrip">Add To Trip</button>
+                        <button class="btn btn-secondary m-1" id="planner-previewExit">Clear</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
-    <div class="bg-secondary">
+    <div class="footer">
         <div class="container">
+            <!-- Footer -->
             <footer class="py-3 my-4"> 
                 <h5 class="text-center text-body-secondary py-3">Māori Tourism</h5> 
                 <ul class="nav justify-content-center border-top py-2 mb-0"> 
@@ -56,11 +119,90 @@
                     <li class="nav-item"><a href="planner.html" class="nav-link px-2 text-body-secondary">Planner</a></li> 
                     <li class="nav-item"><a href="routes.html" class="nav-link px-2 text-body-secondary">Routes</a></li> 
                     <li class="nav-item"><a href="resources.html" class="nav-link px-2 text-body-secondary">Resources</a></li> 
-                </ul> 
+                </ul>
+                <a href="https://www.vecteezy.com/free-vector/koru" target="_blank">Koru Vectors by Vecteezy</a> 
             </footer> 
         </div>
     </div>
-    <script type="module" crossorigin src="../scripts/planner_map.js"></script>
+
+    <!-- Export Modal Popup -->
+    <div class="modal fade" id="planner-exportModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exportModalTitle">Trip Ready</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    Your trip has been generated. Open it in Google Maps to continue.
+                </div>
+                <div class="modal-footer">
+                    <a id="planner-exportGoBtn" class="btn btn-primary" target="_blank">Take me there</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tutorial Modal Popup -->
+    <div class="modal fade" id="tutorialModal" tabindex="-1" aria-labelledby="tutorialModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tutorialModalTitle">Map System Tutorial</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-4">
+                        <h6>1. Choose a filter</h6>
+                        <p>Choose one of the filters on the left-hand side to see the map suggestions</p>
+                    </div>
+                    <div class="mb-4">
+                        <h6>2. Adding Locations</h6>
+                        <p>Select a location by clicking on a marker and click “Add To Trip” to place it on your route.</p>
+                    </div>
+                    <div class="mb-4">
+                        <h6>3. Reordering Stops</h6>
+                        <p>Use the ↑ and ↓ buttons to change the order of your route.</p>
+                    </div>
+                    <div class="mb-4">
+                        <h6>4. Removing Locations</h6>
+                        <p>Click the ✕ button to remove a stop from your list.</p>
+                    </div>
+                    <div class="mb-4">
+                        <h6>5. Viewing Routes</h6>
+                        <p>Your route will automatically update on the map when changes are made.</p>
+                    </div>
+                    <div class="alert alert-info mb-0">
+                        Tip: You can rebuild the route anytime if something looks off.
+                    </div>
+
+                </div>
+
+                <div class="modal-footer mx-auto">
+                    <button class="btn btn-primary" id="tutorial" data-bs-dismiss="modal">Got it</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript for MapLibre-GL Map -->
+    <script type="module" crossorigin src="./../scripts/planner_map.js"></script>
+
+    <!-- Bootstrap JavaScript Link -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    
+    <!-- Tutorial Modal Auto Popup (First page opening) -->
+    <script>
+        window.addEventListener("load", () => {
+            if (!localStorage.getItem("seenTutorial")) {
+                const modal = new bootstrap.Modal(document.getElementById("tutorialModal"));
+
+                modal.show();
+                localStorage.setItem("seenTutorial", "true");
+            }
+        });
+    </script>
 </body>
 </html>
