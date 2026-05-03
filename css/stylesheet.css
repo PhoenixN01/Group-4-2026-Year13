@@ -288,4 +288,9 @@ body{
     width: 200px;
 }
 
+/* External link hover effect */
+.btn-resources:hover {
+    background-color: var(--nav-background) !important;
+}
+
 /* End of Resource Styling */
