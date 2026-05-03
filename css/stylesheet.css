@@ -56,30 +56,83 @@ html {
 
 /* End of Template styling */
 
-.lead{
-    max-width: 80%;
-    margin: auto;
-}
+/* Index Styling */
 
+/* General card styling */
 .card{
     background-color: #E8EFEF !important;
 }
 
-.card-filler {
-    opacity: 0.6;
-}
-
+/* Styling for primary buttons */
 .btn-primary{
-    background-color: var(--nav-background) !important;
-    border-color: var(--nav-background) !important;
+    background-color: var(--nav-background) !important; /* Set button background color to the navigation background color */
+    border-color: var(--nav-background) !important; /* Set button border color to the same as the background */
     width: 200px;
 }
 
+/* Hover effect for primary buttons */
 .btn-primary:hover{
     background-color: #052a75ce !important;
 }
 
-/* Resources.html Styling */
+/* Circle icon styling */
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50px; /* Make the shape a perfect circle */
+    background-color: var(--nav-background); /* Set the circle's background to the navigation background color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* SVG icon inside circle */
+.icon-circle svg {
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+
+/* Centering the hero content */
+.hero-content {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+ 
+/* Semi-transparent background for tertiary sections */
+.bg-body-tertiary {
+    --bs-bg-opacity: 0.6 !important;
+}
+
+/* Light blue background for info sections */
+.bg-info{
+    background-color: #C8D9DC !important;
+}
+
+/* End of Index Styling */
+
+/* Planner Styling */
+
+#map{
+    width: 100%;
+    height: 400px;
+}
+
+/* End of Planner Styling */
+
+/* Routes Styling */
+
+/* Setting width and height for modal map */
+.modal-map{
+    width: 100%;
+    height: 400px;
+}
+
+/* End of Routes Styling */
+
+/* Resource Styling */
+
 .btn-resources {
     background-color: #ffffff !important;
     border-color: var(--nav-background) !important;
@@ -97,3 +150,5 @@ html {
 .bg-body-tertiary {
     --bs-bg-opacity: 0.6 !important;
 }
+
+/* End of Resource Styling */
