@@ -130,6 +130,7 @@ html {
 
 /* Resource Styling */
 
+/* Setting style for external link buttons */
 .btn-resources {
     background-color: #ffffff !important;
     border-color: var(--nav-background) !important;
@@ -138,12 +139,14 @@ html {
     width: 200px;
 }
 
+/* positioning hero content over image */
 .hero-content {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
+/* adding transparency to hero content */
 .bg-body-tertiary {
     --bs-bg-opacity: 0.6 !important;
 }
